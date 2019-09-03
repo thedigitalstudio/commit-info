@@ -9,9 +9,10 @@ async function run() {
     const GITHUB_SHA = core.getInput('GITHUB_SHA');
 
     const { stdout, stderr } = await exec(`git log --oneline -n 1 ${GITHUB_SHA}`);
-    core.exportVariable('GITHUB_ONELINE', stdout);
 
-    core.setOutput('GITHUB_ONELINE', stdout)
+    const output = stdout.trim();
+    core.exportVariable('GITHUB_ONELINE', output);
+    core.setOutput('GITHUB_ONELINE', output)
 
   } catch (error) {
     core.setFailed(error.message);
