@@ -5,6 +5,9 @@ inputs:
   GITHUB_SHA:
     description: 'SHA Hash of the current commit information'
     default: ''
+outputs:
+  GITHUB_ONELINE:
+    description: 'Oneline git description of the commit. Available as an Environment variable'
 runs:
   using: 'node12'
   main: 'lib/main.js'
