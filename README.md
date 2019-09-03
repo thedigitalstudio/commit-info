@@ -1,9 +1,32 @@
-# JavaScript Action Template
+# Version number generator action
 
-This template offers an easy way to get started writing a JavaScript action with TypeScript compile time support, unit testing with Jest and using the GitHub Actions Toolkit.
+This action intends to set more helpful messages about the current github commit.
 
 ## Getting Started
 
-See the walkthrough located [here](https://github.com/actions/toolkit/blob/master/docs/javascript-action.md).
+Use as a step like the following:
 
-In addition to walking your through how to create an action, it also provides strategies for versioning, releasing and referencing your actions.
+```yaml
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Get Commit info
+      id: info
+      uses: thedigitalstudio/commit-info@master
+      with:
+        GITHUB_SHA: ${{ github.sha }}
+    - name: Print the data
+      run: |
+        echo ${{ steps.info.outputs.GITHUB_ONELINE }}
+        echo ${GITHUB_ONELINE}
+```
+
+This will make the following environment variables accessible from subsequent steps
+GITHUB_ONELINE
+
+As you can see, you can use the generated variable as an environment variable or via the yaml templating
