@@ -8,6 +8,8 @@ inputs:
 outputs:
   GITHUB_ONELINE:
     description: 'Oneline git description of the commit. Available as an Environment variable'
+  BUILD_URL:
+    description: 'A variable for accessing the current build screen'
 runs:
   using: 'node12'
   main: 'lib/main.js'

@@ -28,5 +28,6 @@ jobs:
 
 This will make the following environment variables accessible from subsequent steps
 GITHUB_ONELINE
+BUILD_URL
 
 As you can see, you can use the generated variable as an environment variable or via the yaml templating
